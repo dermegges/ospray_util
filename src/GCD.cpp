@@ -31,4 +31,17 @@ namespace ospray_util
 
         return m;
     }
+
+    float gcd(const std::vector<float>& v, float epsilon)
+    {
+        float result = 0.0f;
+
+        // gcd(a1, a2, a3, ..., aN) = gcd(gcd(a1, a2), a3, ..., aN)
+        for (float x : v)
+        {
+            result = gcd(x, result, epsilon);
+        }
+
+        return result;
+    }
 }
