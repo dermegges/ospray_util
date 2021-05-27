@@ -1,6 +1,6 @@
-find_package(ospray 2.2.0 REQUIRED)
+find_path(OSPRAY_INCLUDE_DIR ospray/ospray.h DOC "Path to the include directory of OSPRay.")
 
-include_directories(../include)
+include_directories(../include ${OSPRAY_INCLUDE_DIR})
 
 add_library(${PROJECT_NAME}
     GCD.cpp
@@ -9,5 +9,3 @@ add_library(${PROJECT_NAME}
     ../include/GCD.hpp
     ../include/PiecewiseLinearFunction.hpp
 )
-
-target_link_libraries(${PROJECT_NAME} ospray::ospray)
