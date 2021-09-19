@@ -10,6 +10,7 @@ namespace ospray_util
     public:
         void clearControlPoints();
         bool insertControlPoint(float x, const std::array<float, N>& y);
+        std::vector<float> getDomainOfControlPointsInInterval(float a, float b) const;
         std::array<float, N> lerp(float x) const;
 
     private:
@@ -28,6 +29,33 @@ namespace ospray_util
         const auto p = std::make_pair(x, y);
 
         return controlPoints.insert(p).second;
+    }
+
+    template <std::size_t N>
+    std::vector<float> PiecewiseLinearFunction<N>::getDomainOfControlPointsInInterval(float a, float b) const
+    {
+        const auto itLeft = controlPoints.upper_bound(a);
+        const auto itRight = controlPoints.lower_bound(b);
+
+        if (itLeft == controlPoints.end() || itRight == controlPoints.begin())
+        {
+            return {};
+        }
+
+        // vector for holding the x-values of the control points in (a, b)
+        std::vector<float> v;
+
+        for (auto it = itLeft; it->first < std::prev(itRight)->first; ++it)
+        {
+            v.push_back(it->first);
+        }
+
+        if (itLeft->first <= std::prev(itRight)->first)
+        {
+            v.push_back(std::prev(itRight)->first);
+        }
+
+        return v;
     }
 
     template <std::size_t N>
