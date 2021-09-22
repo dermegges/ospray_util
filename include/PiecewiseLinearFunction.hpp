@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <vector>
 
 namespace ospray_util
 {
