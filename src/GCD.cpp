@@ -1,4 +1,4 @@
-#include "GCD.hpp"
+#include "ospray_util/GCD.hpp"
 
 #include <stdexcept>
 #include <cmath>

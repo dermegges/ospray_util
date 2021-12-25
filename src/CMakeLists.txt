@@ -8,7 +8,7 @@ add_library(${PROJECT_NAME}
     TransferFunction.cpp
 
     # only to make sure that headers are shown in IDEs as part of the project
-    ../include/GCD.hpp
-    ../include/PiecewiseLinearFunction.hpp
-    ../include/TransferFunction.hpp
+    ../include/ospray_util/GCD.hpp
+    ../include/ospray_util/PiecewiseLinearFunction.hpp
+    ../include/ospray_util/TransferFunction.hpp
 )

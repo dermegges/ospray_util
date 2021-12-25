@@ -1,5 +1,5 @@
-#include "TransferFunction.hpp"
-#include "GCD.hpp"
+#include "ospray_util/TransferFunction.hpp"
+#include "ospray_util/GCD.hpp"
 
 namespace ospray_util
 {
